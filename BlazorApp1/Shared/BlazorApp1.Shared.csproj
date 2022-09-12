@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.11.0" />
     <PackageReference Include="ServiceStack.Interfaces" Version="6.3.0" />
+    <PackageReference Include="ServiceStack.OrmLite" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>

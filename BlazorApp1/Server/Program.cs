@@ -24,7 +24,14 @@ builder.Logging.AddSerilog(new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("logs/testing.txt", rollingInterval: RollingInterval.Day).CreateLogger());
  
-builder.Services.AddSingleton<IDbConnectionFactory>(a => new OrmLiteConnectionFactory("db", SqliteDialect.Provider));
+builder.Services.AddSingleton<IDbConnectionFactory>((a) => { 
+    
+    var dbcon = new OrmLiteConnectionFactory("db", SqliteDialect.Provider);
+    using var db = dbcon.Open();
+    TableUp.DoAllTableUps(db);
+    return dbcon;
+
+});
 builder.Services.AddSingleton<TaskRaceTaskManager>();
 builder.Services.AddServerSideBlazor(options =>
 {

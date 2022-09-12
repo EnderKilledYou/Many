@@ -20,7 +20,10 @@ namespace BlazorApp1.Server.Hubs
         {
             this.taskRaceTaskManager = taskRaceTaskManager;
         }
-     
+        public async Task TaskManagerUpdate(TaskManagerUpdate update)
+        {
+            //todo: this shit
+        }
 
 
     }

@@ -63,7 +63,7 @@ public sealed class HubHelper
                 ImageScannerTaskManager = ImageScannerTaskManager.GetInstance().TaskCountCount(),
                 EventRouterTaskManager = EventRouterTaskManager.GetInstance().TaskCountCount(),
                 ImagePrepperTaskManager = ImagePrepperTaskManager.GetInstance().TaskCountCount(),
-                Events= newEvents
+           //     Events= newEvents
             });
              
         }

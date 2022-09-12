@@ -26,8 +26,6 @@ public class TaskRaceTask : LongTask<(int watcherId, int streamerId)>
 
         var watcher = await db.SingleAsync<Watcher>(watcherId);
 
-        //check for null
-
         if (watchedStreamer.LastCheck != DateTime.MinValue)
         {
             return;
@@ -37,6 +35,8 @@ public class TaskRaceTask : LongTask<(int watcherId, int streamerId)>
         if (count == 1)
         {
             await db.UpdateOnlyAsync(() => new Watcher { WatchedStreamerId = id }, a => a.Id == watcherId);
+            await db.InsertAsync(new WatchingTask() { WatchedStreamerId = streamerId, WatcherId = watcherId });
+
         }
         
         
